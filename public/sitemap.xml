@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>/</loc>
+    <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>/assets/aistudio/Screenshot_20261123_172756_WhatsApp_eb29603e.jpg</image:loc>
+      <image:title>Salvatore Property Management Official Cameroon Services Brochure</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>/src/assets/images/hero_twilight_residence_1795452365997.jpg</image:loc>
+      <image:title>Modern Residential Building Managed in Cameroon</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>/src/assets/images/property_executive_apartments_1795452366810.jpg</image:loc>
+      <image:title>Executive Multi-Unit Apartment Building in Douala Cameroon</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>/src/assets/images/property_diplomatic_villa_1795452367211.jpg</image:loc>
+      <image:title>Diplomatic Villa and Private House Managed in Yaounde Cameroon</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>/src/assets/images/property_commercial_plaza_1795452366564.jpg</image:loc>
+      <image:title>Commercial Plaza and Retail Property Managed in Cameroon</image:title>
+    </image:image>
   </url>
 </urlset>

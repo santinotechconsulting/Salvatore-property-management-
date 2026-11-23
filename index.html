@@ -3,29 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Salvatore Property Management | Cameroon Real Estate</title>
+    <title>Salvatore Property Management | Cameroon Property Managers</title>
     <meta
       name="description"
-      content="Trusted property management across Cameroon for local & diaspora owners. Inspections, tenant screening, rent collection & maintenance. Call +237 679 988 242."
+      content="Trusted property management in Douala, Yaoundé, Buea & across Cameroon. Tenant screening, rent collection, inspections & repairs. Call +237 679 988 242."
     />
     <meta
       name="keywords"
-      content="Salvatore Property Management, property management Cameroon, diaspora property management Cameroon, Douala property manager, Yaounde real estate management, Buea apartments management, Limbe villa management, Kribi property supervision, rent collection Cameroon"
+      content="Salvatore Property Management, property management Cameroon, diaspora property management Cameroon, property managers Douala, real estate management Yaounde, Buea apartment management, Limbe villa management, Kribi property supervision, Bafoussam commercial property management, rent collection Cameroon"
     />
     <meta name="author" content="Salvatore Property Management" />
+    <meta name="application-name" content="Salvatore Property Management" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content="#091526" />
     <meta name="format-detection" content="telephone=no" />
+
+    <!-- Regional Geo Signals for Cameroon & Diaspora Search -->
+    <meta name="geo.region" content="CM" />
+    <meta name="geo.placename" content="Douala, Yaoundé, Buea, Cameroon" />
+    <meta name="geo.position" content="4.0511;9.7679" />
+    <meta name="ICBM" content="4.0511, 9.7679" />
 
     <!-- OpenGraph Social Cards -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_CM" />
     <meta property="og:locale:alternate" content="fr_CM" />
     <meta property="og:site_name" content="Salvatore Property Management" />
-    <meta property="og:title" content="Salvatore Property Management | Cameroon Real Estate" />
+    <meta property="og:title" content="Salvatore Property Management | Cameroon Property Managers" />
     <meta
       property="og:description"
-      content="Trusted property management across Cameroon for local & diaspora owners. Inspections, tenant screening, rent collection & maintenance. Call +237 679 988 242."
+      content="Trusted property management in Douala, Yaoundé, Buea & across Cameroon. Tenant screening, rent collection, inspections & repairs. Call +237 679 988 242."
     />
     <meta property="og:image" content="/assets/aistudio/Screenshot_20261123_172756_WhatsApp_eb29603e.jpg" />
     <meta
@@ -35,10 +43,10 @@
 
     <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Salvatore Property Management | Cameroon Real Estate" />
+    <meta name="twitter:title" content="Salvatore Property Management | Cameroon Property Managers" />
     <meta
       name="twitter:description"
-      content="Trusted property management across Cameroon for local & diaspora owners. Inspections, tenant screening, rent collection & maintenance. Call +237 679 988 242."
+      content="Trusted property management in Douala, Yaoundé, Buea & across Cameroon. Tenant screening, rent collection, inspections & repairs. Call +237 679 988 242."
     />
     <meta name="twitter:image" content="/assets/aistudio/Screenshot_20261123_172756_WhatsApp_eb29603e.jpg" />
     <meta
@@ -66,28 +74,59 @@
       rel="stylesheet"
     />
 
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
+    <!-- Rich Schema.org Structured Data (JSON-LD) -->
+    <script id="salvatore-structured-data" type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
+            "@type": "WebSite",
+            "@id": "#website",
+            "name": "Salvatore Property Management",
+            "alternateName": "Salvatore Real Estate & Property Management Cameroon",
+            "description": "Professional property management across Cameroon for residential houses, apartments, multi-unit blocks, and commercial buildings.",
+            "inLanguage": "en-CM"
+          },
+          {
             "@type": "RealEstateAgent",
+            "@id": "#organization",
             "name": "Salvatore Property Management",
             "slogan": "Your Property. Our Responsibility. Your Peace of Mind.",
-            "description": "Professional property management across towns and cities in Cameroon for residential houses, apartments, multi-unit blocks, and commercial properties.",
+            "description": "Trusted property management across towns and cities in Cameroon helping local and diaspora owners supervise houses, apartments, buildings, and commercial properties.",
             "telephone": "+237679988242",
             "email": "management@salvatoreproperties.cm",
+            "priceRange": "8%-10% monthly rent",
             "image": "/assets/aistudio/Screenshot_20261123_172756_WhatsApp_eb29603e.jpg",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Douala",
+              "addressRegion": "Littoral",
+              "addressCountry": "CM"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+237679988242",
+              "contactType": "customer service",
+              "areaServed": "CM",
+              "availableLanguage": ["English", "French"]
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "08:00",
+                "closes": "18:00"
+              }
+            ],
             "areaServed": [
-              { "@type": "City", "name": "Douala" },
-              { "@type": "City", "name": "Yaoundé" },
-              { "@type": "City", "name": "Buea" },
-              { "@type": "City", "name": "Limbe" },
-              { "@type": "City", "name": "Kribi" },
-              { "@type": "City", "name": "Bafoussam" },
-              { "@type": "City", "name": "Bamenda" },
-              { "@type": "City", "name": "Garoua" }
+              { "@type": "City", "name": "Douala", "containedInPlace": { "@type": "Country", "name": "Cameroon" } },
+              { "@type": "City", "name": "Yaoundé", "containedInPlace": { "@type": "Country", "name": "Cameroon" } },
+              { "@type": "City", "name": "Buea", "containedInPlace": { "@type": "Country", "name": "Cameroon" } },
+              { "@type": "City", "name": "Limbe", "containedInPlace": { "@type": "Country", "name": "Cameroon" } },
+              { "@type": "City", "name": "Kribi", "containedInPlace": { "@type": "Country", "name": "Cameroon" } },
+              { "@type": "City", "name": "Bafoussam", "containedInPlace": { "@type": "Country", "name": "Cameroon" } },
+              { "@type": "City", "name": "Bamenda", "containedInPlace": { "@type": "Country", "name": "Cameroon" } },
+              { "@type": "City", "name": "Garoua", "containedInPlace": { "@type": "Country", "name": "Cameroon" } }
             ],
             "hasOfferCatalog": {
               "@type": "OfferCatalog",
@@ -111,12 +150,64 @@
             "applicationCategory": "BusinessApplication",
             "operatingSystem": "All",
             "description": "Interactive owner operations portal for tracking Cameroon property occupancy, monthly rent collection, inspection dossiers, maintenance tickets, and tenant screening."
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How can I manage my house or apartment building in Cameroon while living abroad?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Salvatore Property Management acts as your dedicated local steward across Cameroon. We inspect your property bi-weekly, vet tenants, collect monthly rent, oversee repairs with before-and-after photo verification, and deliver itemized statements on the 1st of every month via our Owner Portal, email, and WhatsApp."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Which cities and towns in Cameroon does Salvatore Property Management cover?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We operate active field teams across Douala, Yaoundé, Buea, Limbe, Kribi, Bafoussam, Bamenda, and Garoua, as well as neighboring residential and commercial districts."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do rent collection and monthly payouts to owners work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "We issue automated rent due notices, reconcile Mobile Money and bank transfers, escalate arrears promptly, and remit net rent directly to your Cameroonian or international bank account alongside an itemized monthly ledger."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How do you screen tenants and supervise repairs or contractors?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Prospective tenants undergo national ID verification, employment and income checks, and guarantor vetting prior to lease signing. For repairs, we obtain itemized pre-approval quotes from vetted technicians and verify completed work with timestamped photos."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What are Salvatore Property Management's management fees?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Standard In-Country Oversight is 8% of monthly collected rent, while Full Diaspora Stewardship—including bi-weekly photo dossiers and international remittance coordination—is 10% of collected rent."
+                }
+              }
+            ]
           }
         ]
       }
     </script>
   </head>
   <body class="bg-[#F8F9FB] text-[#0B192C] antialiased selection:bg-[#0B192C] selection:text-[#F4D27A]">
+    <noscript>
+      <div style="max-width:960px;margin:2rem auto;padding:1.5rem;font-family:sans-serif;line-height:1.6;">
+        <h1>Salvatore Property Management — Cameroon Property Managers</h1>
+        <p>Your Property. Our Responsibility. Your Peace of Mind. We manage houses, apartments, multi-unit buildings, and commercial properties across Douala, Yaoundé, Buea, Limbe, Kribi, Bafoussam, Bamenda, and Garoua.</p>
+        <p>Services include property supervision and regular inspections, tenant search and screening, rent collection and payment follow-up, cleaning supervision, repairs coordination, owner photo reporting, and investment monitoring. Call or WhatsApp +237 679 988 242.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

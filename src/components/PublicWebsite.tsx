@@ -25,6 +25,7 @@ import {
 import {
   CAMEROON_CITIES,
   MANAGEMENT_SERVICES,
+  OWNER_FAQS,
   OWNER_OUTCOMES,
   PORTFOLIO_ASSET_SHOWCASE,
   SALVATORE_CONTACT,
@@ -136,6 +137,7 @@ export function PublicWebsite({
   const [activeServiceId, setActiveServiceId] = useState<string>(MANAGEMENT_SERVICES[0].id);
   const [selectedCityId, setSelectedCityId] = useState<string>('douala');
   const [selectedOutcomeIdx, setSelectedOutcomeIdx] = useState<number>(0);
+  const [openFaqId, setOpenFaqId] = useState<string>(OWNER_FAQS[0].id);
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [flyerModalOpen, setFlyerModalOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -1544,6 +1546,73 @@ export function PublicWebsite({
           </div>
         </section>
 
+        {/* Owner & Diaspora FAQ Section (Matches FAQPage Schema.org Rich Results) */}
+        <section id="faq" className="py-9 lg:py-11 bg-white border-b border-slate-200">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              <div className="lg:col-span-4">
+                <p className="text-xs font-semibold uppercase tracking-wider text-[#8C650B]">
+                  Owner &amp; Diaspora FAQ
+                </p>
+                <h2 className="mt-1 font-editorial text-2xl sm:text-3xl font-semibold tracking-tight text-[#0B192C] [text-wrap:balance]">
+                  Clear answers on managing property across Cameroon
+                </h2>
+                <p className="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Everything local and diaspora property owners ask before entrusting residential houses, apartments, or commercial buildings to Salvatore Property Management.
+                </p>
+              </div>
+
+              <div className="lg:col-span-8 space-y-2.5">
+                {OWNER_FAQS.map((faq) => {
+                  const isOpen = openFaqId === faq.id;
+                  return (
+                    <div
+                      key={faq.id}
+                      className="border border-slate-200 rounded-xl bg-[#F8F9FB] overflow-hidden transition-colors"
+                    >
+                      <button
+                        type="button"
+                        id={`${faq.id}-trigger`}
+                        aria-expanded={isOpen}
+                        aria-controls={`${faq.id}-panel`}
+                        onClick={() => setOpenFaqId(isOpen ? '' : faq.id)}
+                        className="w-full px-5 py-3.5 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-white/70 transition-colors"
+                      >
+                        <span className="text-sm font-semibold text-[#0B192C]">
+                          {faq.question}
+                        </span>
+                        <ChevronDown
+                          className={`w-4 h-4 text-[#8C650B] shrink-0 transition-transform duration-200 ${
+                            isOpen ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            id={`${faq.id}-panel`}
+                            role="region"
+                            aria-labelledby={`${faq.id}-trigger`}
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2, ease: EASE_OUT_EXPO }}
+                            className="overflow-hidden"
+                          >
+                            <p className="px-5 pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200/70 pt-3">
+                              {faq.answer}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Section 5: Consultation & Onboarding Form */}
         <section id="consultation" className="py-10 lg:py-12 bg-white">
           <div className="max-w-7xl mx-auto px-6">
@@ -1880,6 +1949,9 @@ export function PublicWebsite({
               </a>
               <a href="#estimator" className="hover:text-white transition-colors">
                 Fee Estimator
+              </a>
+              <a href="#faq" className="hover:text-white transition-colors">
+                FAQ
               </a>
               <button
                 type="button"

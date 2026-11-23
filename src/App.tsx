@@ -62,29 +62,95 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const pageUrl = `${window.location.origin}${window.location.pathname}`;
-    let canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.rel = 'canonical';
-      document.head.appendChild(canonical);
-    }
-    canonical.href = pageUrl;
+    const origin = window.location.origin;
+    const pageUrl = `${origin}${window.location.pathname}`;
+    const absoluteFlyerUrl = `${origin}/assets/aistudio/Screenshot_20261123_172756_WhatsApp_eb29603e.jpg`;
 
-    let ogUrl = document.querySelector<HTMLMetaElement>('meta[property="og:url"]');
-    if (!ogUrl) {
-      ogUrl = document.createElement('meta');
-      ogUrl.setAttribute('property', 'og:url');
-      document.head.appendChild(ogUrl);
+    const upsertLink = (rel: string, href: string, hreflang?: string) => {
+      const selector = hreflang
+        ? `link[rel="${rel}"][hreflang="${hreflang}"]`
+        : `link[rel="${rel}"]:not([hreflang])`;
+      let linkEl = document.querySelector<HTMLLinkElement>(selector);
+      if (!linkEl) {
+        linkEl = document.createElement('link');
+        linkEl.rel = rel;
+        if (hreflang) linkEl.hreflang = hreflang;
+        document.head.appendChild(linkEl);
+      }
+      linkEl.href = href;
+    };
+
+    const upsertMeta = (attrName: 'property' | 'name', key: string, value: string) => {
+      let metaEl = document.querySelector<HTMLMetaElement>(`meta[${attrName}="${key}"]`);
+      if (!metaEl) {
+        metaEl = document.createElement('meta');
+        metaEl.setAttribute(attrName, key);
+        document.head.appendChild(metaEl);
+      }
+      metaEl.content = value;
+    };
+
+    upsertLink('canonical', pageUrl);
+    upsertLink('alternate', pageUrl, 'en-cm');
+    upsertLink('alternate', pageUrl, 'en');
+    upsertLink('alternate', pageUrl, 'x-default');
+
+    upsertMeta('property', 'og:url', pageUrl);
+    upsertMeta('property', 'og:image', absoluteFlyerUrl);
+    upsertMeta('name', 'twitter:image', absoluteFlyerUrl);
+
+    const ldScript = document.getElementById('salvatore-structured-data');
+    if (ldScript?.textContent) {
+      try {
+        const parsed = JSON.parse(ldScript.textContent) as {
+          '@graph'?: Array<Record<string, unknown>>;
+        };
+        if (Array.isArray(parsed['@graph'])) {
+          parsed['@graph'] = parsed['@graph'].map((node) => {
+            if (node['@type'] === 'WebSite') {
+              return { ...node, '@id': `${origin}/#website`, url: pageUrl };
+            }
+            if (node['@type'] === 'RealEstateAgent') {
+              return {
+                ...node,
+                '@id': `${origin}/#organization`,
+                url: pageUrl,
+                image: absoluteFlyerUrl,
+              };
+            }
+            if (node['@type'] === 'WebApplication') {
+              return { ...node, url: pageUrl };
+            }
+            return node;
+          });
+          ldScript.textContent = JSON.stringify(parsed);
+        }
+      } catch {
+        // Leave static JSON-LD intact if parsing fails
+      }
     }
-    ogUrl.content = pageUrl;
   }, []);
 
   useEffect(() => {
-    document.title =
-      viewMode === 'portal'
-        ? 'Owner Portal — Salvatore Property Management'
-        : 'Salvatore Property Management | Cameroon Real Estate';
+    const isPortal = viewMode === 'portal';
+    const nextTitle = isPortal
+      ? 'Owner Portal — Salvatore Property Management'
+      : 'Salvatore Property Management | Cameroon Property Managers';
+    const nextDesc = isPortal
+      ? 'Live owner operations portal for tracking Cameroon property occupancy, monthly rent remittance, inspections, and maintenance.'
+      : 'Trusted property management in Douala, Yaoundé, Buea & across Cameroon. Tenant screening, rent collection, inspections & repairs. Call +237 679 988 242.';
+
+    document.title = nextTitle;
+    const descMeta = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    if (descMeta) descMeta.content = nextDesc;
+    const ogTitle = document.querySelector<HTMLMetaElement>('meta[property="og:title"]');
+    if (ogTitle) ogTitle.content = nextTitle;
+    const ogDesc = document.querySelector<HTMLMetaElement>('meta[property="og:description"]');
+    if (ogDesc) ogDesc.content = nextDesc;
+    const twTitle = document.querySelector<HTMLMetaElement>('meta[name="twitter:title"]');
+    if (twTitle) twTitle.content = nextTitle;
+    const twDesc = document.querySelector<HTMLMetaElement>('meta[name="twitter:description"]');
+    if (twDesc) twDesc.content = nextDesc;
   }, [viewMode]);
 
   const [properties, setProperties] = useState<ManagedProperty[]>(INITIAL_PROPERTIES);

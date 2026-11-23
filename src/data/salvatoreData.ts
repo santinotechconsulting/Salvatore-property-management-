@@ -267,6 +267,41 @@ export const OWNER_OUTCOMES = [
   },
 ];
 
+export const OWNER_FAQS = [
+  {
+    id: 'faq-abroad',
+    question:
+      'How can I manage my house or apartment building in Cameroon while living abroad?',
+    answer:
+      'Salvatore Property Management acts as your dedicated local steward across Cameroon. We inspect your property bi-weekly, vet tenants, collect monthly rent, oversee repairs with before-and-after photo verification, and deliver itemized statements on the 1st of every month via our Owner Portal, email, and WhatsApp.',
+  },
+  {
+    id: 'faq-cities',
+    question:
+      'Which cities and towns in Cameroon does Salvatore Property Management cover?',
+    answer:
+      'We operate active field teams across Douala, Yaoundé, Buea, Limbe, Kribi, Bafoussam, Bamenda, and Garoua, as well as neighboring residential and commercial districts.',
+  },
+  {
+    id: 'faq-rent',
+    question: 'How do rent collection and monthly payouts to owners work?',
+    answer:
+      'We issue automated rent due notices, reconcile Mobile Money and bank transfers, escalate arrears promptly, and remit net rent directly to your Cameroonian or international bank account alongside an itemized monthly ledger.',
+  },
+  {
+    id: 'faq-screening',
+    question: 'How do you screen tenants and supervise repairs or contractors?',
+    answer:
+      'Prospective tenants undergo national ID verification, employment and income checks, and guarantor vetting prior to lease signing. For repairs, we obtain itemized pre-approval quotes from vetted technicians and verify completed work with timestamped photos.',
+  },
+  {
+    id: 'faq-fees',
+    question: "What are Salvatore Property Management's management fees?",
+    answer:
+      'Standard In-Country Oversight is 8% of monthly collected rent, while Full Diaspora Stewardship—including bi-weekly photo dossiers and international remittance coordination—is 10% of collected rent.',
+  },
+];
+
 export const INITIAL_PROPERTIES: ManagedProperty[] = [
   {
     id: 'PROP-101',
