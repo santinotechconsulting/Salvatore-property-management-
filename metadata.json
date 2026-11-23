@@ -1,0 +1,6 @@
+{
+  "name": "Salvatore Property Management",
+  "description": "Professional property management website and owner operations portal across Cameroon for residential, apartment, building, and commercial property owners locally and abroad.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
